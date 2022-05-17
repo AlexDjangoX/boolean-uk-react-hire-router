@@ -1,10 +1,25 @@
-import { useState } from "react"
-import PeopleList from "./components/PeopleList"
+import { useState, useEffect } from "react";
+import PeopleList from "./components/PeopleList";
 
-function Dashboard(props) {
-  const { hiredPeople } = props
+const userBaseUrl = "https://randomuser.me/api/";
+const numberOfUsers = 50;
 
-  const [people, setPeople] = useState([])
+function Dashboard({ hiredPeople }) {
+  const [people, setPeople] = useState([]);
+
+  useEffect(() => {
+    getPeopleData();
+  }, []);
+
+  async function getPeopleData() {
+    try {
+      const response = await fetch(`${userBaseUrl}?results=${numberOfUsers}`);
+      const data = await response.json();
+      setPeople(data.results);
+    } catch (error) {
+      console.log("User error; ", error);
+    }
+  }
 
   return (
     <main className="dashboard-layout">
@@ -17,7 +32,7 @@ function Dashboard(props) {
         <PeopleList people={hiredPeople} />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
