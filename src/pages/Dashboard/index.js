@@ -25,11 +25,11 @@ function Dashboard({ hiredPeople }) {
     <main className="dashboard-layout">
       <section>
         <h2>People</h2>
-        <PeopleList people={people} />
+        <PeopleList people={people} setPeople={setPeople} />
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople} setPeople={setPeople} />
       </section>
     </main>
   );

@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-
-function PeopleListItem({ person, people }) {
-  console.log("4,,,,", people);
+import EditForm from "../../PersonProfile/components/EditForm";
+function PeopleListItem({ person, people, setPeople }) {
   return (
-    <li>
+    <li id={person.email}>
       <h3>
         {person.name.first} {person.name.last}
       </h3>
@@ -12,9 +11,11 @@ function PeopleListItem({ person, people }) {
         Profile
       </Link>
       <div></div>
-      <Link to={`/view/${person.id.value}/edit`} state={{ person, people }}>
+      <Link to={`/view/${person.id.value}/edit`} state={{ person }}>
         Edit
       </Link>
+
+      <EditForm setPeople={setPeople} people={people} person={person} />
     </li>
   );
 }

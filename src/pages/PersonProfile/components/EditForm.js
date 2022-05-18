@@ -1,38 +1,33 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
-function EditForm() {
-  const [editPerson, setEditPerson] = useState(null);
-  const [peopleList, setPeopleList] = useState([]);
+function EditForm({ setPeople, people, person }) {
   const [editEmail, setEditEmail] = useState("");
-
-  const location = useLocation();
-
-  useEffect(() => {
-    const personData = location.state.person;
-    setEditPerson(personData);
-    const allPeople = location.state.people;
-    console.log("All People EditForm: ", allPeople);
-    setPeopleList(allPeople);
-  }, [location]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("edit person ", editPerson.email);
-    console.log("peopleList", peopleList);
-    console.log(editEmail);
-    // location.pathname = "/";
+    UpdateEmail(editEmail);
+  }
+
+  function UpdateEmail(email) {
+    const edited = people.map((el) => {
+      if (el.id === person.id) {
+        return { ...person, email: editEmail };
+      }
+      return person;
+    });
+
+    setPeople(edited);
   }
 
   return (
     <React.Fragment>
       <h2>Person details</h2>
-      {editPerson && (
+      {person && (
         <div>
-          <p>Email : {editPerson.email}</p>
-          <p>Phone: {editPerson.phone}</p>
-          <p>Phone: {editPerson.cell}</p>{" "}
+          <p>Email : {person.email}</p>
+          <p>Phone: {person.phone}</p>
+          <p>Phone: {person.cell}</p>{" "}
         </div>
       )}
 

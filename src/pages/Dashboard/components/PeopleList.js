@@ -1,10 +1,15 @@
 import PeopleListItem from "./PeopleListItem";
 
-function PeopleList({ people }) {
+function PeopleList({ people, setPeople }) {
   return (
     <ul>
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} people={people} />
+        <PeopleListItem
+          key={index}
+          person={person}
+          people={people}
+          setPeople={setPeople}
+        />
       ))}
     </ul>
   );

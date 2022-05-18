@@ -23,7 +23,6 @@ export default function App() {
           <Link to="/">Dashboard</Link>
           <Routes>
             <Route path="/" element={<Dashboard hiredPeople={hiredPeople} />} />
-
             <Route
               path="/view/:id"
               element={<PersonProfile hirePerson={hirePerson} />}
