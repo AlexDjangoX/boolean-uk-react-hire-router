@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import EditForm from "../../PersonProfile/components/EditForm";
+
 function PeopleListItem({ person, people, setPeople }) {
   return (
     <li id={person.email}>

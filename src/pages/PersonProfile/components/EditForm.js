@@ -10,13 +10,15 @@ function EditForm({ setPeople, people, person }) {
   }
 
   function UpdateEmail(email) {
+    console.log(people);
     const edited = people.map((el) => {
-      if (el.id === person.id) {
-        return { ...person, email: editEmail };
+      if (el.email === person.email) {
+        return { ...el, email: editEmail };
       }
-      return person;
-    });
 
+      return el;
+    });
+    console.log(edited);
     setPeople(edited);
   }
 
