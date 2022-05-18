@@ -4,7 +4,7 @@ function PeopleList({ people }) {
   return (
     <ul>
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+        <PeopleListItem key={index} person={person} people={people} />
       ))}
     </ul>
   );

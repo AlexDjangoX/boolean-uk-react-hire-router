@@ -8,8 +8,8 @@ function HireForm({ person, hirePerson }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    hirePerson({ ...person, wage: wage });
 
+    hirePerson({ ...person, wage: wage });
     location.pathname = "/";
   }
 

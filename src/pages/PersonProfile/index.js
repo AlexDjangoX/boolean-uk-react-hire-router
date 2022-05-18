@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import EditForm from "./components/EditForm";
 
 import HireForm from "./components/HireForm";
 
-function PersonProfile({ hirePerson }) {
+function PersonProfile({ hirePerson, setHiredPeople }) {
   const [person, setPerson] = useState(null);
 
   const location = useLocation();
@@ -21,6 +22,7 @@ function PersonProfile({ hirePerson }) {
         {person.name.first} {person.name.last}
       </h2>
       <HireForm person={person} hirePerson={hirePerson} />
+      <EditForm person={person} />
     </article>
   );
 }

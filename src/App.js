@@ -4,6 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
 import PersonProfile from "./pages/PersonProfile";
+import EditForm from "./pages/PersonProfile/components/EditForm";
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([]);
@@ -12,11 +13,6 @@ export default function App() {
     setHiredPeople((current) => {
       return [...current, person];
     });
-    // for (let item of hiredPeople) {
-    //   if (item.name !== person.name) {
-    //     console.log(item.name);
-    //   }
-    // }
   }
 
   return (
@@ -29,10 +25,10 @@ export default function App() {
             <Route path="/" element={<Dashboard hiredPeople={hiredPeople} />} />
 
             <Route
-              path="/profile/:id"
+              path="/view/:id"
               element={<PersonProfile hirePerson={hirePerson} />}
             />
-            <Route path="/profile/:id/edit" element={<PersonProfile />} />
+            <Route path="/view/:id/edit" element={<EditForm />} />
           </Routes>
         </nav>
       </header>
